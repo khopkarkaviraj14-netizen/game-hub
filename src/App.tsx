@@ -4,7 +4,7 @@ import { Show } from "@chakra-ui/react";
 
 
 function App() {
-  return (
+  return ( 
     <Grid
       templateAreas={{
         base: '"nav" "main"',
@@ -20,10 +20,12 @@ function App() {
         </GridItem>
       <Show />
       <GridItem area="main" >
-        Main
+        <GameGrid />
       </GridItem>
     </Grid>
-    );
+  );
 }
+  
+
 
 export default App;

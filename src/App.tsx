@@ -4,7 +4,7 @@ import GenreList from "./component/GenreList";
 
 
 
-function App() {
+function App() { 
   return ( 
     <Grid
       templateAreas={{
@@ -26,6 +26,8 @@ function App() {
     </Grid>
   );
 }
+  
+
   
 
 

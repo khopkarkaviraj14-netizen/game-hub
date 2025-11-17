@@ -1,21 +1,29 @@
-import bullsEye from '..assets/bulls eye.webp';
-import thumbsUp from '../assets/meh.webp';
+import bullsEye from '../assets/bulls eye.webp';
+import thumbsUp from '../assets/thumbs up.webp';
 import meh from '../assets/meh.webp';
-
+ 
 interface Props {
-    rating: number;
+  rating: number;
 }
+ 
 const Emoji = ({ rating }: Props) => {
-  if (rating < 3) return null; 
-  
-  const emojiMap = { [key: number]: ImageProps } { 
-    3: { src: meh, alt: 'meh', boxsize:'25px' },
-    4: { src: thumbsUp, alt: 'recommended', boxsixe: '25px'},
-    5: { src: bullsEye, alt: 'exceptional', boxSize: '35px'},
-  }
+  if (rating < 3) return null;
+ 
+  const emojiMap: { [key: number]: { src: string; alt: string; size: number } } = {
+    3: { src: meh, alt: "meh", size: 25 },
+    4: { src: thumbsUp, alt: "recommended", size: 25 },
+    5: { src: bullsEye, alt: "exceptional", size: 35 },
+  };
+ 
+  const emoji = emojiMap[rating];
+ 
   return (
-    <Image {...emojiMap[rating]} marginTop={1}  />
-  )
-}
-
-export default Emoji
+<img
+      src={emoji.src}
+      alt={emoji.alt}
+      style={{ width: emoji.size, height: emoji.size, marginTop: 5 }}
+    />
+  );
+};
+ 
+export default Emoji;

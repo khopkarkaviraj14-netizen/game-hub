@@ -1,13 +1,14 @@
-import { Box, Flex, Grid, GridItem, Show, } from "@chakra-ui/react";
+import { Box, Flex, Grid, GridItem, } from "@chakra-ui/react";
 import NavBar from "./component/NavBar";
 import GenreList from "./component/GenreList";
 import GameGrid from "./component/GameGrid";
-import { SetStateAction, useState } from "react";
-import { Genre } from "./hooks/useGenres";
 import PlatformSelector from "./component/PlatformSelector";
-import { Platform } from "./hooks/useGames";
 import GameHeading from "./component/GameHeading";
 import SortSelector from "./component/SortSelector";
+import type { Platform } from "./hooks/useGames";
+import { useState } from "react";
+import type { Genre } from "./hooks/useGenres";
+
 
 export interface GameQuery {
   genre: Genre | null;
@@ -31,13 +32,13 @@ const [gameQuery, setGameQuery] = useState<GameQuery>({} as GameQuery);
       }}
     >
       <GridItem area="nav">
-        <NavBar onSearch={(searchText) => setGameQuery({ ...gameQuery, searchText }) } />
+        <NavBar onSearch={(searchText) => setGameQuery({ ...gameQuery, SearchText: searchText }) } />
       </GridItem>
-      <Show above="lg">
+      
         <GridItem area="aside" paddingX={5}>
           <GenreList selectedGenre={gameQuery.genre} onSelectGenre={(genre: any) => setGameQuery( {...gameQuery, genre } )}  />
         </GridItem>
-      <Show />
+      
       <GridItem area="main">
         <Box paddingLeft={2}>
            <GameHeading gameQuery={gameQuery}  />
